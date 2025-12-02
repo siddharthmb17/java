@@ -1,23 +1,30 @@
-class Calculator {
-    int a, b;
-
-    Calculator(int x, int y) {
-        a = x;
-        b = y;
+class BankAccount{
+    String accountHolder;
+    double balance;
+    BankAccount(String name,double amount){
+        accountHolder=name;
+        balance=amount;
     }
-
-    double div() {                
-        if (b > 0) {
-            return (double) a/b;  
+    void deposit(double amt){
+        balance+=amt;
+    }
+    void withdraw(double amt){
+        if(amt<=balance){
+            balance-=amt;
         } else {
-            return -1;
+            System.out.println("Insufficient funds");
         }
     }
+    void display(){
+        System.out.println(accountHolder+"has balance:"+balance);
+    }
 }
-
-public class Main {
+public class Main{
     public static void main(String[] args) {
-        Calculator calc = new Calculator(149, 20);
-        System.out.println("Division " + calc.div());  // Prints 0.5
+        BankAccount acc1=new BankAccount("ravi", 5000);
+        
+        acc1.deposit(2000);
+        acc1.withdraw(1500);
+        acc1.display();
     }
 }
